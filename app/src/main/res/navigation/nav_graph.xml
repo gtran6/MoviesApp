@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.moviesapp.MainFragment"
+        android:label="Movie App"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_saveFragment"
+            app:destination="@id/saveFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.example.moviesapp.DetailsFragment"
+        android:label="Details"
+        tools:layout="@layout/fragment_details" />
+
+    <fragment
+        android:id="@+id/saveFragment"
+        android:name="com.example.moviesapp.SaveFragment"
+        android:label="My List"
+        tools:layout="@layout/fragment_save" >
+        <action
+            android:id="@+id/action_saveFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+        <action
+            android:id="@+id/action_saveFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.example.moviesapp.SearchFragment"
+        android:label="Search"
+        tools:layout="@layout/fragment_search" />
+
+</navigation>
