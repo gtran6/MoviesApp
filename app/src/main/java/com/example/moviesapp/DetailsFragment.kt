@@ -5,8 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.moviesapp.databinding.FragmentDetailsBinding
+import com.example.moviesapp.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 // TODO: Rename parameter arguments, choose names that match
@@ -26,6 +29,8 @@ class DetailsFragment : Fragment() {
     private var param2: String? = null
 
     private lateinit var binding: FragmentDetailsBinding
+    private val mainViewModel: MainViewModel by viewModels()
+    //private val args by navArgs<DetailsFragmentArgs>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,8 +72,13 @@ class DetailsFragment : Fragment() {
         binding.popularity.text = popularity
         binding.voteAverage.text = vote_average
         binding.overview.text = overview
-//        binding.backButton.setOnClickListener {
-//            MainActivity().supportFragmentManager.popBackStack()
-//        }
+/*        binding.backButton.setOnClickListener {
+            MainActivity().supportFragmentManager.popBackStack()
+        }*/
+
+/*        binding.heartButton.setOnClickListener {
+            val movie = args.movie
+            mainViewModel.saveMovie(movie)
+        }*/
     }
 }
