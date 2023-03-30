@@ -33,7 +33,6 @@ private const val ARG_PARAM2 = "param2"
 
 @AndroidEntryPoint
 class MainFragment : Fragment() {
-    // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
 
@@ -61,16 +60,22 @@ class MainFragment : Fragment() {
         }
     }
 
-    private val popularAdapter by lazy { PopularAdapter { list ->
-        onMovieSelected.onMovieSelected(list)
-    } }
-    private val upcomingAdapter by lazy { UpcomingAdapter { list ->
-        onMovieSelected.onMovieSelected(list)
-    } }
+    private val popularAdapter by lazy {
+        PopularAdapter { list ->
+            onMovieSelected.onMovieSelected(list)
+        }
+    }
+    private val upcomingAdapter by lazy {
+        UpcomingAdapter { list ->
+            onMovieSelected.onMovieSelected(list)
+        }
+    }
 
-    private val movieAdapter by lazy { MovieAdapter { list ->
-        onMovieSelected.onMovieSelected(list)
-    } }
+    private val movieAdapter by lazy {
+        MovieAdapter { list ->
+            onMovieSelected.onMovieSelected(list)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -96,7 +101,7 @@ class MainFragment : Fragment() {
         setUpcomingAdapter()
 
         mainViewModel.getNowPlayingMovie(API_KEY)
-        mainViewModel.nowPlaying.observe( this.viewLifecycleOwner, Observer {
+        mainViewModel.nowPlaying.observe(viewLifecycleOwner, Observer {
             when (it) {
                 is Events.Loading -> {
                     binding.progressBar.visibility = View.VISIBLE
@@ -116,7 +121,7 @@ class MainFragment : Fragment() {
         })
 
         mainViewModel.getPopularMovie(API_KEY)
-        mainViewModel.popular.observe( this.viewLifecycleOwner, Observer {
+        mainViewModel.popular.observe(viewLifecycleOwner, Observer {
             when (it) {
                 is Events.Loading -> {
                     binding.progressBar.visibility = View.VISIBLE
@@ -136,7 +141,7 @@ class MainFragment : Fragment() {
         })
 
         mainViewModel.getUpcomingMovie(API_KEY)
-        mainViewModel.upcoming.observe( this.viewLifecycleOwner, Observer {
+        mainViewModel.upcoming.observe(viewLifecycleOwner, Observer {
             when (it) {
                 is Events.Loading -> {
                     binding.progressBar.visibility = View.VISIBLE
@@ -158,12 +163,12 @@ class MainFragment : Fragment() {
 
     private fun setUpcomingAdapter() = binding.rcvUpcoming.apply {
         adapter = upcomingAdapter
-        layoutManager = LinearLayoutManager(this.context, RecyclerView.HORIZONTAL, false)
+        layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
     }
 
     private fun setPopularAdapter() = binding.rcvPopular.apply {
         adapter = popularAdapter
-        layoutManager = LinearLayoutManager(this.context, RecyclerView.HORIZONTAL, false)
+        layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
     }
 
     private fun setRecyclerTopView() = binding.rcvTop.apply {
@@ -177,9 +182,10 @@ class MainFragment : Fragment() {
         setupParallax()
 
         val handler = Handler(Looper.getMainLooper())
-        val runnable = object  : Runnable {
+        val runnable = object : Runnable {
             override fun run() {
-                val position = (layoutManager as SlowScrollingLinearLayoutManager).findLastVisibleItemPosition() + 1
+                val position =
+                    (layoutManager as SlowScrollingLinearLayoutManager).findLastVisibleItemPosition() + 1
                 if (position < movieAdapter.differ.currentList.size) {
                     smoothScrollToPosition(position)
                 } else {

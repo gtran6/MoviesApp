@@ -8,8 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.moviesapp.databinding.ItemMovieBinding
 import com.example.moviesapp.model.Result
+import javax.inject.Inject
 
-class SaveAdapter : RecyclerView.Adapter<SaveAdapter.ViewHolder>() {
+class SaveAdapter @Inject constructor() : RecyclerView.Adapter<SaveAdapter.ViewHolder>() {
 
     private val differCallback = object : DiffUtil.ItemCallback<Result>() {
         override fun areItemsTheSame(oldItem: Result, newItem: Result): Boolean {

@@ -5,6 +5,7 @@ plugins {
     id 'com.google.dagger.hilt.android'
     id 'androidx.navigation.safeargs.kotlin'
     id 'com.google.devtools.ksp' version '1.8.0-1.0.8'
+    id 'kotlin-parcelize'
 }
 
 android {
@@ -78,6 +79,13 @@ dependencies {
     //navigation
     implementation "androidx.navigation:navigation-fragment-ktx:2.5.3"
     implementation "androidx.navigation:navigation-ui-ktx:2.5.3"
+
+    //responsive
+    implementation 'com.intuit.sdp:sdp-android:1.1.0'
+    implementation 'com.intuit.ssp:ssp-android:1.1.0'
+
+    implementation 'androidx.fragment:fragment-ktx:1.2.5'
+
 }
 kapt {
     correctErrorTypes true

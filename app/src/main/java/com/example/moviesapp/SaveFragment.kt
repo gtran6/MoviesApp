@@ -15,6 +15,7 @@ import com.example.moviesapp.databinding.FragmentSaveBinding
 import com.example.moviesapp.extra.Events
 import com.example.moviesapp.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -34,7 +35,9 @@ class SaveFragment : Fragment() {
 
     private lateinit var binding: FragmentSaveBinding
     private val mainViewModel: MainViewModel by viewModels()
-    private val saveAdapter by lazy { SaveAdapter() }
+
+    @Inject
+    lateinit var saveAdapter: SaveAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,6 +58,28 @@ class SaveFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        setRecyclerView()
+        mainViewModel.nowPlaying.observe(viewLifecycleOwner, Observer {
+            when (it) {
+                is Events.Loading -> {
+                }
+                is Events.Success -> {
+                    it.let {
+                        it.data?.let { it3 ->
+                            saveAdapter.differ.submitList(it3)
+                        }
+                    }
+                }
+                is Events.Error -> {
+                }
+            }
+        })
+    }
+
+    private fun setRecyclerView() = binding.rcvSaveFragment.apply {
+        adapter = saveAdapter
+        layoutManager = GridLayoutManager(activity, 2)
     }
 
     companion object {

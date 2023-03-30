@@ -75,6 +75,7 @@ class MainViewModel @Inject constructor(val mainRepository: MainRepository) : Vi
 
     fun getAllItems() = mainRepository.getAllItems()
 
+    //delete movie
     fun onMovieSwiped(movie: Result) {
         viewModelScope.launch {
             mainRepository.deleteItem(movie)
@@ -88,6 +89,7 @@ class MainViewModel @Inject constructor(val mainRepository: MainRepository) : Vi
         }
     }
 
+    // insert movie
     fun saveMovie(movie: Result) {
         viewModelScope.launch {
             mainRepository.insertItem(movie)

@@ -1,9 +1,12 @@
 package com.example.moviesapp.model
 
+import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 @Entity(tableName = "movie_table")
 data class Result(
     @ColumnInfo(name = "adult")
@@ -34,4 +37,4 @@ data class Result(
     val vote_average: Double,
     @ColumnInfo(name = "vote_count")
     val vote_count: Int
-)
+) : Parcelable

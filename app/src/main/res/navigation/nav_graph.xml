@@ -23,12 +23,12 @@
         android:name="com.example.moviesapp.DetailsFragment"
         android:label="Details"
         tools:layout="@layout/fragment_details" >
-        <action
-            android:id="@+id/action_detailsFragment_to_saveFragment"
-            app:destination="@id/saveFragment" />
 <!--        <argument
-            android:name="movie"
-            app:argType="com.example.moviesapp.model.Result"/>-->
+            android:name="movie_data"
+            app:argType="com.example.moviesapp.model.Result" />-->
+        <action
+            android:id="@+id/action_detailsFragment_to_saveFragment2"
+            app:destination="@id/saveFragment" />
     </fragment>
 
     <fragment
