@@ -1,6 +1,6 @@
 # Movies App
-A demo movie app using The Movie Database API and modern Android tech stacks
 ---
+A demo movie app using The Movie Database API and modern Android tech stacks
 ### Phone Display
 <img src="https://user-images.githubusercontent.com/78507684/232574774-1b3ee633-4f3d-4150-b603-bd488f022e93.png" width="30%" height="30%">&ensp;
 <img src="https://user-images.githubusercontent.com/78507684/232575237-187c627f-16d3-46ea-912c-3748ec2eafa2.png" width="30%" height="30%">
